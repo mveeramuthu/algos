@@ -45,8 +45,17 @@ package com.mveeramuthu.graph;
  */
 
 public class KnightTour {
+
+    /*
+     Approach: Graph BFS
+     T: O(rows * cols)
+     S: O(rows * cols)
+    */
     
-    
-    
-    
+    public static int findMinMoves(int rows, int cols, 
+                                   int startRow, int startCol, 
+                                   int endRow, int endCol) {
+        
+        return -1;
+    }
 }
