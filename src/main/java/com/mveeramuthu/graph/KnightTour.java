@@ -60,16 +60,6 @@ public class KnightTour {
         if (startRow == endRow && startCol == endCol) {
             return 0;
         }
-        
-        // cell visited status and distance to target node
-        int[][] distance  = new int[rows][cols];
-        // starting position can be reached from starting position in 0 moves
-        distance[startRow][startCol] = 0; 
-
-        // BFS queue
-        Queue<Cell> queue = new LinkedList<>();
-        // add starting position to the queue 
-        queue.offer(new Cell(startRow, startCol));
 
         // knight's possible moves
         List<Cell> directions = new ArrayList<>(
@@ -84,7 +74,17 @@ public class KnightTour {
                         new Cell(-2, -1)
                 )
         );
+        
+        // cell visited status and distance to target node
+        int[][] distance  = new int[rows+1][cols+1];
+        // starting position can be reached from starting position in 0 moves
+        distance[startRow][startCol] = 0; 
 
+        // BFS queue
+        Queue<Cell> queue = new LinkedList<>();
+        // add starting position to the queue 
+        queue.offer(new Cell(startRow, startCol));
+        
         // initial state of the cells in the chessboard
         for(int i=0; i<rows; i++) {
             for(int j=0; j<cols; j++) {
@@ -96,38 +96,48 @@ public class KnightTour {
         while(!queue.isEmpty()) {
             Cell currCell = queue.poll();
 
-            for(Cell direction: directions) {
-                
+            for (Cell direction : directions) {
+
                 // neighbor cell
                 int newCellRow = currCell.row + direction.row;
                 int newCellCol = currCell.col + direction.col;
-                
-                // boundry conditions
-                if(newCellRow < startRow || newCellRow >= endRow 
-                        || newCellCol < startCol || newCellCol >= endCol) {
-                    continue;
-                }
-                
-				// if neighbor is visited already
-                if(distance[newCellRow][newCellCol] != -1) {
-                    continue;
-                }
-                
-                // increment distance
-                distance[newCellRow][newCellCol] = distance[currCell.row][currCell.col] + 1;
 
-                // if current cell is equal to target cell, return its distance
-                if(newCellRow == endRow && newCellCol == endCol) {
-                    return distance[endRow][endCol];
+                // boundry conditions
+                /*
+                if(newCellRow < startRow || newCellRow > endRow 
+                        || newCellCol < startCol || newCellCol > endCol) {
+                    continue;
                 }
-                
-                // if reachable cell is not yet visited and is inside board, push that state into queue
-                queue.offer(new Cell(newCellRow, newCellCol));
+                          
+                */
+
+                if (isValidPosition(rows, cols, newCellRow, newCellCol)) {
+                    // if neighbor is visited already
+                    if (distance[newCellRow][newCellCol] != -1) {
+                        continue;
+                    }
+
+                    // increment distance
+                    distance[newCellRow][newCellCol] = distance[currCell.row][currCell.col] + 1;
+
+                    // if current cell is equal to target cell, return its distance
+                    if (newCellRow == endRow && newCellCol == endCol) {
+                        return distance[endRow][endCol];
+                    }
+
+                    // if reachable cell is not yet visited and is inside board, push that state into queue
+                    queue.offer(new Cell(newCellRow, newCellCol));
+                }
             }
         }
         
         // if ending position can not be reached from starting position
         return -1;
+    }
+
+    public static boolean isValidPosition(int rows, int cols, int newCellRow, int newCellCol)
+    {
+        return ((0 <= newCellRow) && (newCellRow < rows) && (0 <= newCellCol) && (newCellCol < cols));
     }
 }
 
