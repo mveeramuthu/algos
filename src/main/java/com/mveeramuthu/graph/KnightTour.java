@@ -1,5 +1,8 @@
 package com.mveeramuthu.graph;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * Knight's Tour On A Chess Board
  *
@@ -45,17 +48,40 @@ package com.mveeramuthu.graph;
  */
 
 public class KnightTour {
-
-    /*
-     Approach: Graph BFS
-     T: O(rows * cols)
-     S: O(rows * cols)
-    */
     
     public static int findMinMoves(int rows, int cols, 
                                    int startRow, int startCol, 
-                                   int endRow, int endCol) {
+                                   int endRow, int endCol) { 
+            /*
+                 Approach: Graph BFS
+                 T: O(rows * cols)
+                 S: O(rows * cols)
+                 
+                // x and y direction, where a knight can move  
+                // queue for storing states of knight in board  
+                // make all cell unvisited  
+                // visit starting state  
+                // loop untill we have one element in queue  
+                // if current cell is equal to target cell, return its distance
+                // loop for all reachable states  
+                // If reachable state is not yet visited and inside board, push that state into queue
+            */
+        
+        Queue<Cell> queue = new LinkedList<>();
+        
+        
+        
         
         return -1;
+    }
+}
+
+class Cell {
+    public int x;
+    public int y;
+    
+    public Cell(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 }
