@@ -63,12 +63,13 @@ public class KnightTour {
         
         // cell visited status and distance to target node
         int[][] distance  = new int[rows][cols];
-        
         // starting position can be reached from starting position in 0 moves
         distance[startRow][startCol] = 0; 
 
         // BFS queue
         Queue<Cell> queue = new LinkedList<>();
+        // add starting position to the queue 
+        queue.offer(new Cell(startRow, startCol));
 
         // knight's possible moves
         List<Cell> directions = new ArrayList<>(
@@ -94,41 +95,48 @@ public class KnightTour {
         // loop until queue is empty
         while(!queue.isEmpty()) {
             Cell currCell = queue.poll();
-            
-            // if current cell is equal to target cell, return its distance
-            if(currCell.x == endRow && currCell.y == endCol) {
-                return distance[endRow][endCol];
-            }
 
             for(Cell direction: directions) {
-                int x = currCell.x + direction.x;
-                int y = currCell.y + direction.y;
+                
+                // neighbor cell
+                int newCellRow = currCell.row + direction.row;
+                int newCellCol = currCell.col + direction.col;
                 
                 // boundry conditions
-                if(x < startRow || x >= endRow 
-                        || y < startCol || y >= endCol
-                        || distance[x][y] <= distance[currCell.x][currCell.y]+1) {
+                if(newCellRow < startRow || newCellRow >= endRow 
+                        || newCellCol < startCol || newCellCol >= endCol) {
                     continue;
                 }
+                
+				// if neighbor is visited already
+                if(distance[newCellRow][newCellCol] != -1) {
+                    continue;
+                }
+                
+                // increment distance
+                distance[newCellRow][newCellCol] = distance[currCell.row][currCell.col] + 1;
 
+                // if current cell is equal to target cell, return its distance
+                if(newCellRow == endRow && newCellCol == endCol) {
+                    return distance[endRow][endCol];
+                }
+                
                 // if reachable cell is not yet visited and is inside board, push that state into queue
-                queue.offer(new Cell(x, y));
-                // increment distance 
-                distance[x][y] = distance[currCell.x][currCell.y] + 1;
+                queue.offer(new Cell(newCellRow, newCellCol));
             }
         }
         
-        // If ending position can not be reached from starting position
+        // if ending position can not be reached from starting position
         return -1;
     }
 }
 
 class Cell {
-    public int x;
-    public int y;
+    public int row;
+    public int col;
     
-    public Cell(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Cell(int row, int col) {
+        this.row = row;
+        this.col = col;
     }
 }
