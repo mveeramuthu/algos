@@ -1,14 +1,18 @@
 package com.mveeramuthu.graph;
 
+import org.junit.Assert;
 import org.junit.Test;
-
-import static junit.framework.TestCase.assertEquals;
 
 public class WorldLadderTest { 
     @Test
     public void wordPresentInDictTest() { 
-        String[] observedResult = WordLadder.transformString(new String[]{"cat", "hat", "bad", "had"}, 
+        String[] observedResult = WordLadder.transformString(new String[]{"cat", "rat", "bad", "had"}, 
                 "bat", "had");
-        assertEquals (new String[]{"bat", "bad", "had"}, observedResult);
+        
+        for(String word : observedResult) {
+            System.out.print(word + " -> ");
+        }
+        
+        Assert.assertArrayEquals(new String[]{"bat", "bad", "had"}, observedResult);
     }
 }

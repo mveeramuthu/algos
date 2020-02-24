@@ -20,8 +20,12 @@ public class WordLadder {
         Queue<String> wordsQueue = new LinkedList<>();
         Queue<List<String>> pathsQueue = new LinkedList<>();
 
-        wordsQueue.offer(startStr); // add start string 
-
+        // add start string
+        wordsQueue.offer(startStr);
+        List<String> startStrPath = new ArrayList<>();
+        startStrPath.add(startStr);
+        pathsQueue.offer(startStrPath);
+        
         while(!wordsQueue.isEmpty()) {
             List<String> visitedList = new ArrayList<>();
             String currStr = wordsQueue.poll();
@@ -40,12 +44,18 @@ public class WordLadder {
                     // found the target word
                     if (nextStr.equals(endStr)) {
                         // add path from start word to end word to result
-                        List<String> nextStrPath = new ArrayList<>(currStrPath);
+                        List<String> nextStrPath = new ArrayList<>();
+                        if(currStrPath != null) {
+                            nextStrPath.addAll(currStrPath);
+                        }
                         nextStrPath.add(nextStr);
                         return nextStrPath.toArray(new String[0]);
                     } else if (dictList.contains(nextStr)) {
                         wordsQueue.offer(nextStr);
-                        List<String> nextStrPath = new ArrayList<>(currStrPath);
+                        List<String> nextStrPath = new ArrayList<>();
+                        if(currStrPath != null) {
+                            nextStrPath.addAll(currStrPath);
+                        }
                         nextStrPath.add(nextStr);
                         pathsQueue.add(nextStrPath);
                         visitedList.add(nextStr);
