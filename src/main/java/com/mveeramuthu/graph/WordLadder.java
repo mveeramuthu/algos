@@ -63,6 +63,6 @@ public class WordLadder {
                 }
             }
         }
-        return null;
+        return new String[]{"-1"};
     }
 }
