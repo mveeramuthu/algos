@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class LRUCacheTest {
     @Test
-    public void positiveTest() {
+    public void test1() {
         LRUCache lruCache = new LRUCache(4);
         
         lruCache.getForKey(1);
