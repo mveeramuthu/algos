@@ -49,8 +49,7 @@ public class ZombieClusters {
         graph.print(graph);
         
         // perform dfs
-        //DFSIterative dfsIterative = new DFSIterative();
-        //dfsIterative.dfsAdjList(graph);
+        
         
         return -1;
     }

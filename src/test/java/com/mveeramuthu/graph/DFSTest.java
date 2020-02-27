@@ -14,7 +14,14 @@ public class DFSTest {
         graph.addEdge(graph, 3, 3);
         return graph;
     }
+
+    public AdjacencyMatrixDirectedGraph buildAdjacencyMatrixDirectedGraph() {
+        AdjacencyMatrixDirectedGraph graph = new AdjacencyMatrixDirectedGraph(3, 3);
+        graph.adjMatrix = new int[][]{{1, 1, 0}, {1, 1, 0}, {0, 0, 1}};
+        return graph;
+    }
     
+    // ******************** Adjacency list - iterative ********************
     @Test
     public void adjListIterativeStartFrom0Test() {
         AdjacencyListDirectedGraph graph = buildAdjacencyListDirectedGraph();
@@ -39,6 +46,7 @@ public class DFSTest {
         graph.dfsIterative(graph, 3);
     }
 
+    // ******************** Adjacency list - recursive ********************
     @Test
     public void adjListRecursiveStartFrom0Test() {
         AdjacencyListDirectedGraph graph = buildAdjacencyListDirectedGraph();
@@ -61,5 +69,24 @@ public class DFSTest {
     public void adjListRecursivetartFrom3Test() {
         AdjacencyListDirectedGraph graph = buildAdjacencyListDirectedGraph();
         graph.dfsRecursive(graph, 3);
+    }
+
+    // ******************** Adjacency matrix - iterative ********************
+    @Test
+    public void adjMatrixIterativeStartFrom0Test() {
+        AdjacencyMatrixDirectedGraph graph = buildAdjacencyMatrixDirectedGraph();
+        graph.dfsIterative(graph, 0);
+    }
+
+    @Test
+    public void adjMatrixIterativeStartFrom1Test() {
+        AdjacencyMatrixDirectedGraph graph = buildAdjacencyMatrixDirectedGraph();
+        graph.dfsIterative(graph, 1);
+    }
+
+    @Test
+    public void adjMatrixIterativeStartFrom2Test() {
+        AdjacencyMatrixDirectedGraph graph = buildAdjacencyMatrixDirectedGraph();
+        graph.dfsIterative(graph, 2);
     }
 }
