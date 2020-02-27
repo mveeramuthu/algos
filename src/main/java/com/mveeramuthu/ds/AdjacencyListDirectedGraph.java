@@ -1,4 +1,4 @@
-package com.mveeramuthu.graph;
+package com.mveeramuthu.ds;
 
 import java.util.ArrayList;
 import java.util.Iterator;

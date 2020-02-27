@@ -1,5 +1,6 @@
-package com.mveeramuthu.graph;
+package com.mveeramuthu.graph.bfs;
 
+import com.mveeramuthu.graph.bfs.WordLadder;
 import org.junit.Assert;
 import org.junit.Test;
 

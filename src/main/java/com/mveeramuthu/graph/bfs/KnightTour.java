@@ -1,4 +1,4 @@
-package com.mveeramuthu.graph;
+package com.mveeramuthu.graph.bfs;
 
 import java.util.*;
 

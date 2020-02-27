@@ -1,5 +1,6 @@
-package com.mveeramuthu.graph;
+package com.mveeramuthu.graph.bfs;
 
+import com.mveeramuthu.graph.bfs.KnightTour;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;

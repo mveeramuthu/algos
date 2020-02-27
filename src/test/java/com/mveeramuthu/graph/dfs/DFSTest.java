@@ -1,5 +1,7 @@
-package com.mveeramuthu.graph;
+package com.mveeramuthu.graph.dfs;
 
+import com.mveeramuthu.ds.AdjacencyListDirectedGraph;
+import com.mveeramuthu.ds.AdjacencyMatrixDirectedGraph;
 import org.junit.Test;
 
 public class DFSTest { 

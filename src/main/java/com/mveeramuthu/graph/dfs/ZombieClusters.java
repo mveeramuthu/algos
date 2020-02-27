@@ -1,4 +1,4 @@
-package com.mveeramuthu.graph;
+package com.mveeramuthu.graph.dfs;
 
 /*
 Zombie Clusters
@@ -27,6 +27,8 @@ Zombies 0 and 1 are connected. Zombie 2 is not. Your task is to determine the nu
 on-Find data structure with Union By Rank and Path Compression techniques may pass, but is not acceptable. 
 These issues should go away when we have a more nuanced backend.
 */
+
+import com.mveeramuthu.ds.AdjacencyMatrixDirectedGraph;
 
 import java.util.List;
 
