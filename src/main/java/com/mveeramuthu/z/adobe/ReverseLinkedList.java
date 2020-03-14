@@ -1,6 +1,6 @@
 package com.mveeramuthu.z.adobe;
 
-import ik.ds.list.LinkedListNode;
+import com.mveeramuthu.ds.LinkedListNode;
 
 public class ReverseLinkedList {
 

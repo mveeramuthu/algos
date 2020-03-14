@@ -2,7 +2,7 @@ package com.mveeramuthu.intervals;
 
 import java.util.Arrays;
 
-public class BurstBaloons {
+public class MinArrowsBurstBaloons {
 
     public int findMinArrowShots(int[][] points) {
 

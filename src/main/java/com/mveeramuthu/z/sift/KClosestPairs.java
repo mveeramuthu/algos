@@ -1,6 +1,6 @@
 package com.mveeramuthu.z.sift;
 
-import javafx.util.Pair;
+import com.mveeramuthu.ds.Pair;
 
 import java.io.*;
 import java.util.*;
@@ -32,16 +32,20 @@ class KclosestPairs {
         PriorityQueue<Integer> distanceMinHeap = new PriorityQueue<>();
 
         for(var pair : inputList) {
-            int distance = getDistance(pair.x, pair.y);
-            distanceMinHeap.put(distance);
+            int distance = getDistance(pair.getFirst(), pair.getSecond());
+            distanceMinHeap.add(distance);
         }
 
         for(int i=0; i<k; i++) {
-            kClosestPairs.add(distanceMinHeap.getTop());
-            distanceMinHeap.removeTop();
+            distanceMinHeap.poll();
+            kClosestPairs.add(new Pair<>(-1, -1));
         }
 
         return kClosestPairs;
+    }
+    
+    private int getDistance(int x, int y) {
+        return -1;
     }
 
     public static void main(String[] args) {
