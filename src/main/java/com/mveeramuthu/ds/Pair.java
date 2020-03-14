@@ -20,4 +20,9 @@ public class Pair<N, V> {
     public static <N, V> Pair<N, V> pair(N name, V value) {
         return new Pair<>(name, value);
     }
+    
+    @Override
+    public String toString() {
+        return "(" + this.first + ", " + this.second + ")";
+    }
 }
