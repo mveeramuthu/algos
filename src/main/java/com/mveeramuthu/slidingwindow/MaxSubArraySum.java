@@ -14,7 +14,7 @@ public class MaxSubArraySum {
         
         for(windowEnd = windowStart; windowEnd < arrLen; windowEnd++) {
             windowSum += arr[windowEnd];
-            maxWindowSum = windowSum > maxWindowSum ?  windowSum : maxWindowSum;
+            maxWindowSum = Math.max(windowSum, maxWindowSum);
             
             /*
             System.out.println(arr[windowEnd] + ", [ " + windowStart + ", " 
