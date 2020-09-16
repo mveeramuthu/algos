@@ -1,9 +1,9 @@
-package com.mveeramuthu.array.contiguous;
+package com.mveeramuthu.slidingwindow;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class AverageOfSubarrayOfSizeK {
+public class SubArrayAvg {
     
     /*
     
@@ -21,9 +21,13 @@ public class AverageOfSubarrayOfSizeK {
         double windowSum = 0;
         int windowStart = 0;
         
-        for(int i = windowStart; i < arrLen; i++) {
-            windowSum = windowSum + arr[i];
-            if(i >= k - 1) {
+        for(int windowEnd = windowStart; windowEnd < arrLen; windowEnd++) {
+
+            System.out.println("windowStart:" + windowStart + " windowEnd: " + windowEnd);
+            
+            windowSum = windowSum + arr[windowEnd];
+            
+            if(windowEnd >= k - 1) {
                 result[windowStart] = windowSum / k;
                 windowSum = windowSum - arr[windowStart];
                 
