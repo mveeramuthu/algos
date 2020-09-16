@@ -13,12 +13,18 @@ public class MaxSubArraySum {
         int maxWindowSum = Integer.MIN_VALUE;
         
         for(windowEnd = windowStart; windowEnd < arrLen; windowEnd++) {
-
-            System.out.println(arr[windowEnd] + " [ " + windowStart + ", " + windowEnd + " ]");
+            windowSum += arr[windowEnd];
+            maxWindowSum = windowSum > maxWindowSum ?  windowSum : maxWindowSum;
             
+            /*
+            System.out.println(arr[windowEnd] + ", [ " + windowStart + ", " 
+                    + windowEnd + " ], windowSum = " + windowSum
+                    + ", maxWindowSum = " + maxWindowSum
+            );
+            */
             
-            
-            if(windowEnd == k-1) {
+            if(windowEnd >= k-1) {
+                windowSum -= arr[windowStart];
                 windowStart++;
             }
         }
@@ -29,6 +35,7 @@ public class MaxSubArraySum {
     public static void main(String args[]) {
         try {
             System.out.println(findMaxSubArraySum(new int[]{1, 3, 2, 6, -1, 4, 1, 8, 2}, 5));
+            System.out.println(findMaxSubArraySum(new int[]{2, 1, 5, 1, 3, 2}, 3));
         } catch (Exception e) {
             e.printStackTrace();
         }
