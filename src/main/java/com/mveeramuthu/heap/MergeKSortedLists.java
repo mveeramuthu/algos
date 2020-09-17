@@ -2,12 +2,37 @@ package com.mveeramuthu.heap;
 
 import com.mveeramuthu.ds.LinkedListNode;
 
+import java.util.PriorityQueue;
+
 public class MergeKSortedLists {
-    private static LinkedListNode merge(LinkedListNode[] lists) {
-        LinkedListNode result = new LinkedListNode(-1);
+    private static LinkedListNode merge(LinkedListNode[] listHeads) {
+        PriorityQueue<LinkedListNode> minHeap = new PriorityQueue<>((n1, n2) -> n1.data - n2.data);
         
+        for(LinkedListNode listHead : listHeads) {
+            if(listHead != null) {
+                minHeap.add(listHead);
+            }
+        }
+
+        LinkedListNode mergedListHead = null;
+        LinkedListNode mergedListTail = null;
         
-        return result;
+        while(!minHeap.isEmpty()) {
+            LinkedListNode currNode = minHeap.poll();
+            
+            if(mergedListHead == null) {
+                mergedListHead = mergedListTail = currNode;
+            } else {
+                mergedListTail.next = currNode;
+                mergedListTail = mergedListTail.next;
+            }
+            
+            if(currNode.next != null) {
+                minHeap.add(currNode.next);
+            }
+        }
+        
+        return mergedListHead;
     }
     
     public static void main(String args[]) {
