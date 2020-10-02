@@ -7,4 +7,8 @@ public class LevelOrderTraversal {
     public void bfs(TreeNode root) {
         
     }
+    
+    public static void main(String args[]) {
+        
+    }
 }
