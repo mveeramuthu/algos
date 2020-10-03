@@ -14,7 +14,6 @@ public class MinSubsetSumDiff {
             totalSum += num[i];
         }
         int requiredSum = totalSum / 2;
-        System.out.println("requiredSum = " + requiredSum);
         
         boolean[][] dp = new boolean[numLen][requiredSum+1];
         
@@ -45,16 +44,36 @@ public class MinSubsetSumDiff {
         Stream.of(dp).map(Arrays::toString).forEach(System.out::println);
         
         // get largest required sum of the 'true' cell in last row
-        int trueRequiredSum = 0;
+        int maxPossibleValidSubsetSum = 0;
         for(int j=requiredSum; j>=0; j--) {
             if(dp[numLen-1][j]) {
-                trueRequiredSum = j;
+                maxPossibleValidSubsetSum = j;
+                break;
             }
         }
-
-        System.out.println("trueRequiredSum = " + trueRequiredSum);
         
-        int minSubsetSumDiff = requiredSum - trueRequiredSum;
+        /*
+        input = {1, 2, 3, 9}
+        totalSum = 15
+        
+         subset 1 = subset with maximum subset sum possible (maxPossibleValidSubsetSum) = {1, 2, 3}
+         subset 2 = one element with the diff = {9}
+         
+         sum of all elements in subset 1 = x = maxPossibleValidSubsetSum = 6
+         sum of all elements in subset 2 = y = (totalSum - maxPossibleValidSubsetSum) = (15 - 6) = 9
+         
+         min diff = Math.abs(x - y) = Math.abs(6 - 9) = 3         
+         */
+        
+        System.out.println("totalSum = " + totalSum);
+        System.out.println("requiredSum = " + requiredSum);
+        System.out.println("maxPossibleValidSubsetSum = " + maxPossibleValidSubsetSum);
+        
+        int subsetSumDiff = totalSum - maxPossibleValidSubsetSum;
+        System.out.println("subsetSumDiff = " + subsetSumDiff);
+        int minSubsetSumDiff = Math.abs(subsetSumDiff - maxPossibleValidSubsetSum);
+        System.out.println("minSubsetSumDiff = " + minSubsetSumDiff);
+
         return  minSubsetSumDiff;
     } 
     
