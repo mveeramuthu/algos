@@ -17,14 +17,24 @@ public class LevelOrderTraversal {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         
-        /*
         while(!queue.isEmpty()) {
+            List<Integer> currLevel = new ArrayList<>();
+            int queueSize = queue.size();
             
-            
-            
+            for(int i=0; i<queueSize; i++) {
+                TreeNode currNode = queue.poll();
+
+                currLevel.add(currNode.value);
+                if (currNode.left != null) {
+                    queue.add(currNode.left);
+                }
+                if (currNode.right != null) {
+                    queue.add(currNode.right);
+                }
+            }
+
+            result.add(currLevel);
         }
-        
-         */
         
         return result;
     }
