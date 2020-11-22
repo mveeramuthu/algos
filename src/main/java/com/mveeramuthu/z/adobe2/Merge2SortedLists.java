@@ -5,7 +5,7 @@ import com.mveeramuthu.ds.LinkedListNode;
 import java.util.Objects;
 
 public class Merge2SortedLists {
-    public static LinkedListNode mergeTwoLists(LinkedListNode list1, LinkedListNode list2) {
+    public static LinkedListNode merge(LinkedListNode list1, LinkedListNode list2) {
         Objects.requireNonNull(list1);
         Objects.requireNonNull(list2);
 
@@ -57,7 +57,7 @@ public class Merge2SortedLists {
         System.out.println("list2: ");
         printList(list2);
 
-        var mergedList = mergeTwoLists(list1, list2);
+        var mergedList = merge(list1, list2);
         System.out.println("mergedList: ");
         printList(mergedList);
     }
