@@ -1,4 +1,4 @@
-package com.mveeramuthu.z.adobe2;
+package com.mveeramuthu.z.adobe.sortedlists;
 
 /*
 function quickSelect(list, left, right, k)

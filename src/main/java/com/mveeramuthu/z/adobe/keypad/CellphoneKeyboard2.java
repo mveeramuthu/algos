@@ -1,10 +1,10 @@
-package com.mveeramuthu.z.adobe;
+package com.mveeramuthu.z.adobe.keypad;
 
 public class CellphoneKeyboard2 {
-    
+
     public static int numberOfPatterns(int m, int n) {
-        // Keep a record of invalid numbers on the path between 
-        // two selected keys 
+        // Keep a record of invalid numbers on the path between
+        // two selected keys
         int skip[][] = new int[10][10];
         skip[1][3] = skip[3][1] = 2;
         skip[1][7] = skip[7][1] = 4;
@@ -38,14 +38,14 @@ public class CellphoneKeyboard2 {
                 res += DFS(visited, skip, i, remain-1);
             }
         }
-        // Mark as unvisited for the rest of recursion calls after return from the first one  
+        // Mark as unvisited for the rest of recursion calls after return from the first one
         visited[cur] = false;
         return res;
     }
-    
+
     public static void main(String args[]) {
 
         System.out.println(numberOfPatterns(3, 3));
-        
+
     }
 }

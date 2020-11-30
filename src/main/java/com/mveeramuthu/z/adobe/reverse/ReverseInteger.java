@@ -1,4 +1,4 @@
-package com.mveeramuthu.z.adobe2;
+package com.mveeramuthu.z.adobe.reverse;
 
 public class ReverseInteger {
     public static int reverse(int num) {

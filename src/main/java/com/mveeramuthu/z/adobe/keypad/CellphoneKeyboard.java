@@ -1,4 +1,4 @@
-package com.mveeramuthu.z.adobe;
+package com.mveeramuthu.z.adobe.keypad;
 
 /*
 cellphone keyboard
@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CellphoneKeyboard {
-    
-    public static List<String> generateCombinations(int[][] cellphone) {  
+
+    public static List<String> generateCombinations(int[][] cellphone) {
         if (cellphone == null) {
             return null; // throw exception
         }
@@ -58,15 +58,15 @@ public class CellphoneKeyboard {
             generateValidCombinations(combinationList, cellphone, rowCount, colCount,i - 1, j + 1, combination);
             generateValidCombinations(combinationList, cellphone, rowCount, colCount, i, j + 1, combination);
             generateValidCombinations(combinationList, cellphone, rowCount, colCount,i + 1, j + 1, combination);
-            
+
         } catch (Exception ex) {
 
         }
     }
-    
+
     public static void main(String args[]) {
         List<String> validCombinations = generateCombinations(new int[][]{{1,2,3}, {4,5,6}, {7,8,9}});
-        
+
         for(String result : validCombinations) {
             System.out.print(result + ",");
         }

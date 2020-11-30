@@ -1,4 +1,4 @@
-package com.mveeramuthu.z.adobe;
+package com.mveeramuthu.z.adobe.reverse;
 
 import com.mveeramuthu.ds.LinkedListNode;
 
@@ -12,19 +12,19 @@ public class ReverseLinkedList {
         LinkedListNode currNode = head;
         LinkedListNode prevNode = null;
         LinkedListNode nextNode = null;
-        
+
         while(currNode != null) {
-            
+
             nextNode = currNode.next;
             currNode.next = prevNode;
-            
+
             prevNode = currNode;
             currNode = nextNode;
         }
-        
+
         return prevNode;
     }
-    
+
     public static void printList(LinkedListNode head) {
         if(head == null) {
             System.out.print(" null\n");
@@ -33,7 +33,7 @@ public class ReverseLinkedList {
         System.out.print(head.data + " -> ");
         printList(head.next);
     }
-    
+
     public static void main(String[] args)
     {
         int arr[] = new int[] {12, 56, 2, 11, 1, 890};
@@ -41,7 +41,7 @@ public class ReverseLinkedList {
         LinkedListNode head = new LinkedListNode(arr[0]);
         LinkedListNode prevNode = head;
         LinkedListNode currNode = null;
-        
+
         for (int i = 1; i < arr.length; i++) {
             currNode = new LinkedListNode(arr[i]);
             prevNode.next = currNode;

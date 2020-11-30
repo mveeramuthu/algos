@@ -1,4 +1,4 @@
-package com.mveeramuthu.z.adobe2.fibonacci;
+package com.mveeramuthu.z.adobe.fibonacci;
 
 public class FibRecursive {
     public static int findNthFib(int n) {

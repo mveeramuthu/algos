@@ -1,4 +1,4 @@
-package com.mveeramuthu.z.adobe2.fibonacci;
+package com.mveeramuthu.z.adobe.fibonacci;
 
 public class FibTopDownMemoization {
     private static Integer[] mem = new Integer[31];
