@@ -12,7 +12,7 @@ import java.util.List;
 // 1.8s - T - ts3 & counter = 3
 // 1.9s - F - counter = 4 // F
 // 2.4s - F - counter = 5 // F
-// 2.5s - T - original ts & counter = 1 
+// 2.5s - T - original ts & counter = 1
 // 2.6s - F - counter = 2
 // 2.7s - T
 // 2.8s - T
@@ -21,37 +21,37 @@ import java.util.List;
 // System.currentTimeMillis()
 
 
-public class Solution {
+public class HttpRateLimiter {
     private static int MAX_COUNT = 3;
     private static List<Long> successTimestamps = new ArrayList<>();
 
     private static void makeHttpRequest() {
         System.out.println("Hello");
     }
-    
+
     public static boolean delimiter() {
         long currTimestamp = System.currentTimeMillis();
-        int len = Solution.successTimestamps.size();
-        
+        int len = HttpRateLimiter.successTimestamps.size();
+
         if(len <= 0) {
-            Solution.successTimestamps.add(currTimestamp);
+            HttpRateLimiter.successTimestamps.add(currTimestamp);
             makeHttpRequest();
-            return true;            
-        } else if(currTimestamp - Solution.successTimestamps.get(0) < 1000) {
-            if(Solution.successTimestamps.size() < MAX_COUNT) {
-                Solution.successTimestamps.add(currTimestamp);
+            return true;
+        } else if(currTimestamp - HttpRateLimiter.successTimestamps.get(0) < 1000) {
+            if(HttpRateLimiter.successTimestamps.size() < MAX_COUNT) {
+                HttpRateLimiter.successTimestamps.add(currTimestamp);
                 makeHttpRequest();
                 return true;
             } else {
                 return false;
             }
         }
-        Solution.successTimestamps.remove(0);
-        Solution.successTimestamps.add(currTimestamp);
+        HttpRateLimiter.successTimestamps.remove(0);
+        HttpRateLimiter.successTimestamps.add(currTimestamp);
         makeHttpRequest();
         return true;
     }
-    
+
     public static void main(String args[] ) throws Exception {
         // send multiple reqs
         for(int i=0; i<10; i++) {

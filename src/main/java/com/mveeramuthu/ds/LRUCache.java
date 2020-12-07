@@ -8,7 +8,7 @@ public class LRUCache {
     Deque<Integer> keys;
 
     // use set to store reference to the keys
-    Set<Integer> keyReferences;
+    Set<Integer> cache;
 
     // max cache capacity
     int cacheSize;
@@ -16,13 +16,13 @@ public class LRUCache {
     LRUCache(int cacheSize) {
         this.cacheSize = cacheSize;
         keys = new LinkedList<>();
-        keyReferences = new HashSet<>();
+        cache = new HashSet<>();
     }
 
     // get value of key from cache
     public void getForKey(int key) {
         // if keyReferences contains the requested key
-        if(keyReferences.contains(key)) {
+        if(cache.contains(key)) {
             // remove the found key from it's current index and
             // add it to the start of the "keys" queue
             Iterator<Integer> i = keys.iterator();
@@ -43,11 +43,11 @@ public class LRUCache {
             // remove last key from "keys" queue
             int keyToBeDeleted = keys.removeLast();
             //remove the same key from the key references set
-            keyReferences.remove(keyToBeDeleted);
+            cache.remove(keyToBeDeleted);
         }
 
         keys.push(key);
-        keyReferences.add(key);
+        cache.add(key);
     }
 
     // display contents of cache

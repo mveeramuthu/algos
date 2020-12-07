@@ -6,10 +6,6 @@ public class FibBottomUpMemoization {
             return n;
         }
 
-        return memoize(n);
-    }
-
-    private static int memoize(int n) {
         int[] mem = new int[n + 1];
         mem[1] = 1;
 
