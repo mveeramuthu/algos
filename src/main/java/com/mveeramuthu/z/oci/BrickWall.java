@@ -1,6 +1,5 @@
 package com.mveeramuthu.z.oci;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,8 +17,12 @@ public class BrickWall {
         for (var row : wall) {
             int totalRowWidth = 0;
 
-            for (var brickWidth : row) {
+            for (int i = 0; i < row.size() - 1; i++) {
+
+                int brickWidth = row.get(i);
                 totalRowWidth += brickWidth;
+
+                System.out.println("totalRowWidth = " + totalRowWidth);
 
                 int widthFrequency = map.getOrDefault(totalRowWidth, 0) + 1;
                 map.put(totalRowWidth, widthFrequency);
