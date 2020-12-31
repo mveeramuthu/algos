@@ -12,33 +12,26 @@ import java.util.Map;
 public class LongestNonRepeatingSubstring {
 
     public int getLen(String str) {
-
-        int left = 0;
-        int right = 0;
-        int maxLen = 0;
-
-        // map of character and it's position in the input string
-        Map<Character, Integer> posMap = new HashMap<>();
-
-        for(right=0; right<str.length(); right++) {
-
-            char rightChar = str.charAt(right);
-            if(!posMap.containsKey(rightChar) || posMap.get(rightChar)<left) {
-                posMap.put(rightChar, right);
-            } else {
-                maxLen = Math.max(maxLen, right-left);
-                int prevIndex = posMap.get(rightChar);
-
-                if (prevIndex >= left) {
-                    
-                    left = prevIndex + 1;
-                    posMap.put(rightChar, right);
-                    
-                }
-            }
-
+        if(str == null || str.length() <= 0) {
+            return 0;
         }
 
-        return Math.max(maxLen, right - left);
+        int[] map = new int[128];
+        int strLen = str.length(), maxSubStrLen = 0, start = 0, end = 0;
+
+        while(end < strLen) {
+            char currChar = str.charAt(end);
+
+            start = Math.max(map[currChar], start);
+
+            int subStrLen = end + 1 - start;
+            maxSubStrLen = Math.max(maxSubStrLen, subStrLen);
+
+            map[currChar] = end + 1;
+
+            end++;
+        }
+
+        return maxSubStrLen;
     }
 }

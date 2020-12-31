@@ -12,6 +12,8 @@ class Anagram {
         var map = new HashMap<Character, Integer>();
 
         for (int i = 0; i < len; i++) {
+
+            //             map.put(c, map.getOrDefault(c, 0) + 1);
             if (map.containsKey(str1.charAt(i))) {
                 map.put(str1.charAt(i), map.get(str1.charAt(i)) + 1);
             } else {
