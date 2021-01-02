@@ -7,7 +7,6 @@ class PaintHouses {
         }
 
         int rowLen = costs.length;
-
         int[] prevRow = costs[rowLen - 1]; // last row
 
         // start from last but 1 row
@@ -15,13 +14,13 @@ class PaintHouses {
             var currRow = costs[rowNum];
 
             // red
-            currRow[0] = Math.min(prevRow[1], prevRow[2]);
+            currRow[0] += Math.min(prevRow[1], prevRow[2]);
 
             // green
-            currRow[1] = Math.min(prevRow[0], prevRow[2]);
+            currRow[1] += Math.min(prevRow[0], prevRow[2]);
 
             // blue
-            currRow[2] = Math.min(prevRow[0], prevRow[1]);
+            currRow[2] += Math.min(prevRow[0], prevRow[1]);
 
             prevRow = currRow;
         }
