@@ -19,7 +19,7 @@ public class LevelOrderTraversal {
 
         while(!queue.isEmpty()) {
             List<Integer> currLevel = new ArrayList<>();
-            int queueSize = queue.size();
+            int queueSize = queue.size(); // TODO: wrong??
 
             for(int i=0; i<queueSize; i++) {
                 TreeNode currNode = queue.poll();
